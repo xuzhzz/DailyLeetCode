@@ -15,36 +15,35 @@ package dailyleetcode
  *     Right *TreeNode
  * }
  */
-func treeDepMax(root *TreeNode) int {
-	if root == nil {
-		return 0
+
+func absSub(a, b int) int {
+	if a-b > 0 {
+		return a - b
 	}
-	ldep := treeDepMax(root.Left)
-	rdep := treeDepMax(root.Right)
-	if ldep > rdep {
-		return 1 + ldep
-	}
-	return 1 + rdep
+	return b - a
 }
-func treeDepMin(root *TreeNode) int {
-	if root == nil {
+
+func getMax(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func isBalance(node *TreeNode) int {
+	if node == nil {
 		return 0
 	}
-	ldep := treeDepMax(root.Left)
-	rdep := treeDepMax(root.Right)
-	if ldep < rdep {
-		return 1 + ldep
+	left := isBalance(node.Left)
+	right := isBalance(node.Right)
+	if left == -1 || right == -1 || absSub(left, right) > 1 {
+		return -1
 	}
-	return 1 + rdep
+	return getMax(left, right) + 1
 }
 
 func isBalanced(root *TreeNode) bool {
-	// if root == nil || (root.Left == nil && root.Right == nil) {
-	// 	return false
-	// }
-	maxDep := treeDepMax(root)
-	minDep := treeDepMin(root)
-	return maxDep-minDep <= 1
+	return isBalance(root) != -1
 }
 
 // @lc code=end
