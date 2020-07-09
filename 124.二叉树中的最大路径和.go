@@ -30,17 +30,20 @@ func getMaxPathSum(nums ...int) int {
 }
 
 func maxPathSum(root *TreeNode) int {
-	return maxPathSumHelper(root)
+	maxRes = int(math.MinInt64)
+	_ = maxPathSumHelper(root)
+	return maxRes
 }
 
+// 从每个节点能贡献多少出发，有可能是 左路径/右路径/或者0
 func maxPathSumHelper(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	left := getMaxPathSum(0, maxPathSumHelper(root.Left)+root.Val)
-	right := getMaxPathSum(0, maxPathSumHelper(root.Right)+root.Val)
-	maxRes = getMaxPathSum(maxRes, maxRes+left+right)
-	return getMaxPathSum(left, right)
+	left := getMaxPathSum(0, maxPathSumHelper(root.Left))
+	right := getMaxPathSum(0, maxPathSumHelper(root.Right))
+	maxRes = getMaxPathSum(maxRes, left+right+root.Val)
+	return getMaxPathSum(left+root.Val, right+root.Val, 0)
 }
 
 // @lc code=end
