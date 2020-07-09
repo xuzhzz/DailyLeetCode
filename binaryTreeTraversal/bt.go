@@ -7,6 +7,13 @@ type TreeNode struct {
 	Val   int
 }
 
+// Array2Tree 根据数组生成二叉树
+func Array2Tree(nums []interface{}) *TreeNode {
+	var root *TreeNode
+
+	return root
+}
+
 // pre order
 // 递归
 // 非递归
