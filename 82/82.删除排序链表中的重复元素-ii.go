@@ -18,20 +18,21 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	if head == nil {
 		return head
 	}
-	work := &ListNode{
-		Val: -123,
-	}
+	//  dummy node ?
+	work := &ListNode{Val: -1}
 	work.Next = head
-	flag := -124
-	for work.Next != nil {
-		if work.Val == work.Next.Val || work.Val == flag {
-			work.Next = work.Next.Next
-			flag = work.Val
+	head = work
+	for work.Next != nil && work.Next.Next != nil {
+		if work.Next.Val == work.Next.Next.Val {
+			dupNum := work.Next.Val
+			for work.Next != nil && work.Next.Val == dupNum {
+				work.Next = work.Next.Next
+			}
 		} else {
 			work = work.Next
 		}
 	}
-	return head
+	return head.Next
 }
 
 // @lc code=end
