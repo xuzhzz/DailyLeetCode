@@ -22,11 +22,11 @@ func sortList(head *ListNode) *ListNode {
 }
 
 func sortMerge(head *ListNode) *ListNode {
-	if head.Next == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 	slow := head
-	fast := head
+	fast := head.Next
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next

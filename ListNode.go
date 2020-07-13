@@ -37,3 +37,10 @@ func printListNode(head *ListNode) string {
 	res = res + strconv.Itoa(head.Val)
 	return res
 }
+
+// Node random node
+type Node struct {
+	Val    int
+	Next   *Node
+	Random *Node
+}
