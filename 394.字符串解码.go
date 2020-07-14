@@ -11,7 +11,7 @@ import "strconv"
 // @lc code=start
 
 func decodeString(s string) string {
-	if len(s) == 4 {
+	if len(s) < 4 {
 		return s
 	}
 	stack := make([]byte, 0)
@@ -20,21 +20,20 @@ func decodeString(s string) string {
 			stack = append(stack, s[i])
 		} else {
 			// get [ index
-			idx := i
-			for idx >= 0 && s[idx] != '[' {
+			idx := len(stack) - 1
+			for idx >= 0 && stack[idx] != '[' {
 				idx = idx - 1
 			}
 			// get str
-			repeatedS := s[idx+1 : i]
-
+			repeatedS := string(stack[idx+1:])
 			//  get repeat times
 			repeatedTimes := 0
+			digitEndIdx := idx
 			idx = idx - 1
-			for idx >= 0 && s[idx] >= '0' && s[idx] <= '9' {
-				num, _ := strconv.Atoi(string(s[idx]))
-				repeatedTimes = repeatedTimes*10 + num
+			for idx >= 0 && stack[idx] >= '0' && stack[idx] <= '9' {
 				idx = idx - 1
 			}
+			repeatedTimes, _ = strconv.Atoi(string(stack[idx+1 : digitEndIdx]))
 			stack = stack[:idx+1]
 			rps := ""
 			for repeatedTimes > 0 {
