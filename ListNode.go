@@ -39,8 +39,14 @@ func printListNode(head *ListNode) string {
 }
 
 // Node random node
-type Node struct {
+type NodeRandom struct {
 	Val    int
 	Next   *Node
 	Random *Node
+}
+
+// Node Neighbors node
+type Node struct {
+	Val       int
+	Neighbors []*Node
 }
