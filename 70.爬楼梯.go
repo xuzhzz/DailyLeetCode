@@ -1,3 +1,5 @@
+package dailyleetcode
+
 /*
  * @lc app=leetcode.cn id=70 lang=golang
  *
@@ -20,4 +22,3 @@ func climbStairs(n int) int {
 }
 
 // @lc code=end
-

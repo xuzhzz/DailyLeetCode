@@ -1,3 +1,5 @@
+package dailyleetcode
+
 /*
  * @lc app=leetcode.cn id=55 lang=golang
  *
@@ -34,4 +36,3 @@ func canGetBridge(f []bool, i, jumps int) bool {
 }
 
 // @lc code=end
-

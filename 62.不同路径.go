@@ -1,3 +1,5 @@
+package dailyleetcode
+
 /*
  * @lc app=leetcode.cn id=62 lang=golang
  *
@@ -26,4 +28,3 @@ func uniquePaths(m int, n int) int {
 }
 
 // @lc code=end
-

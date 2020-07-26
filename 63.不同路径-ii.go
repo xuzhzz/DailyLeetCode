@@ -1,3 +1,5 @@
+package dailyleetcode
+
 /*
  * @lc app=leetcode.cn id=63 lang=golang
  *
@@ -53,4 +55,3 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 }
 
 // @lc code=end
-

@@ -40,11 +40,11 @@ func minPathSum(grid [][]int) int {
 	return f[0][0]
 }
 
-func getMin(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
+// func getMin(a, b int) int {
+// 	if a < b {
+// 		return a
+// 	}
+// 	return b
+// }
 
 // @lc code=end
